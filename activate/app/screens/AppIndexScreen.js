@@ -8,12 +8,16 @@ import {
   View,
   Image,
   TouchableOpacity,
+  Dimensions,
   ListView
 } from 'react-native'
 import ViewContainer from '../components/viewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'
+
+const fullWidth = Dimensions.get('window').width;
+const fullHeight = Dimensions.get('window').height;
 
 const PEOPLE = [{
   name: "Genki Hagata",
@@ -25,6 +29,7 @@ const PEOPLE = [{
   phoneNumber: "+13238545777",
   message: "🚨 Your friend Natalia is in trouble. Hey Jessie, it's Natalia, please take care of my fish  🚓"
 }]
+
 
 class AppIndexScreen extends Component {
   constructor (props) {
@@ -71,6 +76,7 @@ class AppIndexScreen extends Component {
         <View style={{flex: 1}} />
         <Icon name="chevron-right" style={styles.personMoreIcon} />
       </TouchableOpacity>
+
     )
   }
 
@@ -92,11 +98,14 @@ class AppIndexScreen extends Component {
           </View>
         </TouchableOpacity>
 
-        <ListView
-          style={{marginTop: 100}}
-          dataSource={this.state.peopleDataSource}
-          renderRow={(person) => this._renderPersonRow(person) }
+        <View>
+          <Text>Test</Text>
+          <ListView
+
+            dataSource={this.state.peopleDataSource}
+            renderRow={(person) => this._renderPersonRow(person) }
           />
+        </View>
       </ViewContainer>
     )
   }
@@ -108,15 +117,20 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
+    right: 0,
+    width: fullWidth,
+    height: fullHeight,
+    flex: 1,
+    backgroundColor: '#3A3E4F'
   },
-  
+
   forgroundContainer: {
     position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
+    right: 0,
+    backgroundColor: '#3A3E4F'
   },
 
   mainButton: {
@@ -159,14 +173,22 @@ const styles = StyleSheet.create({
 
   personRow: {
     flexDirection: 'row',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    borderBottomColor: '#AEADB3',
+    borderBottomWidth: 1,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingTop: 10
   },
 
-  personName: {},
+  personName: {
+    color: 'white'
+  },
   personMoreIcon: {
-    color: 'green',
+    color: 'white',
     height: 30,
-    width: 30
+    width: 30,
+    paddingTop: 5
   }
 })
 
