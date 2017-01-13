@@ -72,7 +72,7 @@ class AppIndexScreen extends Component {
   _renderPersonRow (person) {
     return (
       <TouchableOpacity style={styles.personRow} onPress={(e) => this._navigateToPersonShowPerson(person)}>
-        <Text style={styles.personName}>{`${_.capitalize(person.name)}`}</Text>
+        <Text style={styles.personName}>{person.name}</Text>
         <View style={{flex: 1}} />
         <Icon name="chevron-right" style={styles.personMoreIcon} />
       </TouchableOpacity>
