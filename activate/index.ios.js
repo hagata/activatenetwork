@@ -14,6 +14,7 @@ import {
 import AppIndexScreen from './app/screens/AppIndexScreen'
 import SuccessIndexScreen from './app/screens/SuccessIndexScreen'
 import SettingsIndexScreen from './app/screens/SettingsIndexScreen'
+import PersonShowScreen from './app/screens/PersonShowScreen'
 
 export default class activate extends Component {
 
@@ -26,6 +27,11 @@ export default class activate extends Component {
           <AppIndexScreen
             {...globalNavigatorProps} />
         )
+        case 'PersonShowScreen':
+          return (
+            <PersonShowScreen
+              {...globalNavigatorProps} />
+          )
         case 'SuccessIndex':
           return (
             <SuccessIndexScreen

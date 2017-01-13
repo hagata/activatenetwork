@@ -1,49 +1,22 @@
 'use strict'
+
 import React, { Component } from 'react'
 import {
-  StyleSheet,
   Text,
-  View,
   TouchableOpacity,
-  ListView
+  StyleSheet
 } from 'react-native'
-import ViewContainer from '../components/viewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
-import _ from 'lodash'
-import Icon from 'react-native-vector-icons/FontAwesome'
+import ViewContainer from '../components/viewContainer'
 
-const people = [
-  { firstName: "cid", lastName: "donham", phoneNumber: "555-555-5555" },
-  { firstName: "genki", lastName: "hagata", phoneNumber: "555-555-4444" },
-  { firstName: "natalia", lastName: "Mmargolis", phoneNumber: "555-555-3333" }
-]
-
-export default class PeopleIndexScreen extends Component {
+class SuccessIndexScreen extends Component {
   constructor (props) {
     super(props)
-    // This is needed to render lists from data
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
-
-    // if data changes, set this.state
-    this.state = {
-      peopleDataSource: ds.cloneWithRows(people)
-    }
   }
 
-  _renderPersonRow (person) {
-    return (
-      <TouchableOpacity style={styles.personRow} onPress={(e) => this._navigateToPersonShowPerson(person))}>
-        <Text style={styles.personName}>{`${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`}</Text>
-        <View style={{flex: 1}} />
-        <Icon name="chevron-right" style={styles.personMoreIcon} />
-      </TouchableOpacity>
-    )
-  }
-
-  _navigateToPersonShowPerson (person) {
+  _navigateToAppIndexScreen () {
     this.props.navigator.push({
-      ident: "PersonShow",
-      person: person
+      ident: 'AppIndex'
     })
   }
 
@@ -51,28 +24,19 @@ export default class PeopleIndexScreen extends Component {
     return (
       <ViewContainer>
         <StatusBarBackground />
-        <ListView
-          style={{marginTop: 100}}
-          dataSource={this.state.peopleDataSource}
-          renderRow={(person) => this._renderPersonRow(person) }
-          />
-        <Text>{`Hello from Inside ViewContainer`}</Text>
+        <TouchableOpacity style={styles.backButton} onPress={(e) => this._navigateToAppIndexScreen()}>
+          <Text>Back</Text>
+        </TouchableOpacity>
+        <Text>{`This is your settings page`}</Text>
       </ViewContainer>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  personRow: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  personName: {},
-  personMoreIcon: {
-    color: 'green',
-    height: 30,
-    width: 30
+  backButton: {
+
   }
 })
 
-module.exports = PeopleIndexScreen
+module.exports = SuccessIndexScreen
