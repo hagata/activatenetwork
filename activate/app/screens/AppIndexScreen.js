@@ -20,10 +20,23 @@ const fullWidth = Dimensions.get('window').width;
 const fullHeight = Dimensions.get('window').height;
 
 const PEOPLE = [{
+  name: "Cid Donham",
+  phoneNumber: "+19253254480",
+  message: "🚨 Your friend Natalia is in trouble. Your friend Natalia is in trouble. help!  🚓"
+  },
+
+  {
+  name: "Gela Fridman",
+  phoneNumber: "+19253254480",
+  message: "🚨 Your friend Natalia is in trouble. Your friend Natalia is in trouble. help!  🚓"
+  },
+
+  {
   name: "Genki Hagata",
   phoneNumber: "+19253254480",
   message: "🚨 Your friend Natalia is in trouble. Your friend Natalia is in trouble. help!  🚓"
   },
+
   {
   name: "Jessie Kim",
   phoneNumber: "+13238545777",
@@ -84,22 +97,18 @@ class AppIndexScreen extends Component {
     return (
       <ViewContainer>
         <StatusBarBackground />
-        <TouchableOpacity style={styles.settingsButton} onPress={(e) => this._navigateToSettingsShowScreen()}>
-          <Icon name="cog" style={styles.settingsIcon} />
-        </TouchableOpacity>
-
 
         <TouchableOpacity style={styles.mainContainer} onPress={(e) => this._handleDeploy()}>
           <View style={styles.backgroundContainer}>
             <Image source={require('../images/button-bottom.png')} />
           </View>
-          <View style = {styles.backgroundContainer}>
+          <View style = {styles.foregroundContainer}>
             <Image source={require('../images/button-top.png')} />
           </View>
         </TouchableOpacity>
 
-        <View>
-          <Text>Test</Text>
+        <View style={styles.myNetwork}>
+          <Text style={styles.peopleHeader}>My Network</Text>
           <ListView
 
             dataSource={this.state.peopleDataSource}
@@ -112,25 +121,25 @@ class AppIndexScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  backgroundContainer: {
-    position: 'absolute',
+  mainContainer: {
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
+    position: 'absolute',
     width: fullWidth,
     height: fullHeight,
-    flex: 1,
     backgroundColor: '#3A3E4F'
   },
 
-  forgroundContainer: {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: '#3A3E4F'
+  backgroundContainer: {
+    width: 10,
+    alignItems: 'center'
+  },
+
+  foregroundContainer: {
+    alignItems: 'center',
+    position: 'absolute'
   },
 
   mainButton: {
@@ -171,6 +180,12 @@ const styles = StyleSheet.create({
     padding:10,
   },
 
+  myNetwork: {
+    position: 'absolute',
+    bottom: 10,
+    width: fullWidth
+  },
+
   personRow: {
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -181,6 +196,14 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
 
+  peopleHeader: {
+    color: 'white',
+    fontWeight: 'bold',
+    paddingLeft: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#222430'
+  },
   personName: {
     color: 'white'
   },
