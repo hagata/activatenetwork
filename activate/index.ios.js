@@ -11,22 +11,29 @@ import {
   Text
 } from 'react-native'
 
-import PeopleIndexScreen from './app/screens/PeopleIndexScreen'
+import AppIndexScreen from './app/screens/AppIndexScreen'
+import SuccessIndexScreen from './app/screens/SuccessIndexScreen'
+import SettingsIndexScreen from './app/screens/SettingsIndexScreen'
 
 export default class activate extends Component {
 
   _renderScene (route, navigator) {
     let globalNavigatorProps = { navigator }
 
-    switch (route.indent) {
-      case 'PeopleIndex':
+    switch (route.ident) {
+      case 'AppIndex':
         return (
-          <PeopleIndexScreen
+          <AppIndexScreen
             {...globalNavigatorProps} />
         )
-        case 'PersonShow':
+        case 'SuccessIndex':
           return (
-            <PersonShowScreen
+            <SuccessIndexScreen
+              {...globalNavigatorProps} />
+          )
+        case 'SettingsIndex':
+          return (
+            <SettingsIndexScreen
               {...globalNavigatorProps} />
           )
     }
@@ -35,7 +42,7 @@ export default class activate extends Component {
   render () {
     return (
       <Navigator
-        initialRoute={{indent: 'PeopleIndex'}}
+        initialRoute={{ident: 'AppIndex'}}
         ref='appNavigator'
         renderScene={(route, navigator) => { return this._renderScene(route, navigator) }} />
     )

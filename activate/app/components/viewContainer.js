@@ -21,8 +21,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'stretch',
-    color: '#000'
+    alignItems: 'stretch'
   }
 })
 

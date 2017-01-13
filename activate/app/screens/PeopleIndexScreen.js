@@ -19,7 +19,7 @@ const people = [
   { firstName: "natalia", lastName: "Mmargolis", phoneNumber: "555-555-3333" }
 ]
 
-export default class PeopleIndexScreen extends Component {
+export default class AppIndexScreen extends Component {
   constructor (props) {
     super(props)
     // This is needed to render lists from data
@@ -78,4 +78,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = PeopleIndexScreen
+module.exports = AppIndexScreen
