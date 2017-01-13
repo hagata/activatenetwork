@@ -8,6 +8,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  Dimensions,
   ListView
 } from 'react-native'
 import ViewContainer from '../components/viewContainer'
@@ -15,10 +16,14 @@ import StatusBarBackground from '../components/StatusBarBackground'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
+const fullWidth = Dimensions.get('window').width;
+const fullHeight = Dimensions.get('window').height;
+
 const people = [
   { firstName: "cid", lastName: "donham", phoneNumber: "555-555-5555" },
-  { firstName: "genki", lastName: "hagata", phoneNumber: "555-555-4444" },
-  { firstName: "natalia", lastName: "Mmargolis", phoneNumber: "555-555-3333" }
+  { firstName: "gela", lastName: "fridman", phoneNumber: "555-555-4444" },
+  { firstName: "genki", lastName: "hagata", phoneNumber: "555-555-3333" },
+  { firstName: "jessie", lastName: "kim", phoneNumber: "555-555-3333" }
 ]
 
 class AppIndexScreen extends Component {
@@ -66,6 +71,7 @@ class AppIndexScreen extends Component {
         <View style={{flex: 1}} />
         <Icon name="chevron-right" style={styles.personMoreIcon} />
       </TouchableOpacity>
+
     )
   }
 
@@ -87,11 +93,14 @@ class AppIndexScreen extends Component {
           </View>
         </TouchableOpacity>
 
-        <ListView
-          style={{marginTop: 100}}
-          dataSource={this.state.peopleDataSource}
-          renderRow={(person) => this._renderPersonRow(person) }
+        <View>
+          <Text>Test</Text>
+          <ListView
+
+            dataSource={this.state.peopleDataSource}
+            renderRow={(person) => this._renderPersonRow(person) }
           />
+        </View>
       </ViewContainer>
     )
   }
@@ -103,14 +112,19 @@ const styles = StyleSheet.create({
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
+    right: 0,
+    width: fullWidth,
+    height: fullHeight,
+    flex: 1,
+    backgroundColor: '#3A3E4F'
   },
   forgroundContainer: {
     position: 'absolute',
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
+    right: 0,
+    backgroundColor: '#3A3E4F'
   },
   mainButton: {
     width: 30,
@@ -152,14 +166,22 @@ const styles = StyleSheet.create({
 
   personRow: {
     flexDirection: 'row',
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
+    borderBottomColor: '#AEADB3',
+    borderBottomWidth: 1,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingTop: 10
   },
 
-  personName: {},
+  personName: {
+    color: 'white'
+  },
   personMoreIcon: {
-    color: 'green',
+    color: 'white',
     height: 30,
-    width: 30
+    width: 30,
+    paddingTop: 5
   }
 })
 
