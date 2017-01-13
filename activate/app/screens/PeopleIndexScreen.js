@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import ViewContainer from '../components/viewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
+import DeployButton from '../components/DeployButton'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
@@ -32,6 +33,7 @@ export default class PeopleIndexScreen extends Component {
 
   _renderPersonRow (person) {
     return (
+
       <TouchableOpacity style={styles.personRow} onPress={(e) => this._navigateToPersonShowPerson(person)}>
         <Text style={styles.personName}>{`${_.capitalize(person.firstName)} ${_.capitalize(person.lastName)}`}</Text>
         <View style={{flex: 1}} />
@@ -51,6 +53,7 @@ export default class PeopleIndexScreen extends Component {
     return (
       <ViewContainer>
         <StatusBarBackground />
+        <DeployButton />
         <ListView
           style={{marginTop: 100}}
           dataSource={this.state.peopleDataSource}
