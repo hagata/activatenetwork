@@ -43,14 +43,11 @@ class PersonShowScreen extends Component {
     }
   }
 
-  _onChange(value) {
-    this.setState({value});
-  }
-
   _onPress () {
     let value = this.refs.form.getValue();
+
     if (value) {
-      console.log(value);
+      alert(value);
     }
   }
 
@@ -74,10 +71,10 @@ class PersonShowScreen extends Component {
             ref="form"
             type={Person}
             value={this._getInitialState()}
-            onChange={this._onChange}
             options={options}
           />
-          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+
+        <TouchableHighlight style={styles.button} onPress={this._onPress.bind(this)} underlayColor='#99d9f4'>
             <Text style={styles.buttonText}>Save</Text>
           </TouchableHighlight>
         </View>
