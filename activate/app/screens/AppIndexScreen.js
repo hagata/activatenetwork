@@ -1,10 +1,12 @@
 'use strict'
+
 import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
   Button,
   View,
+  Image,
   TouchableOpacity,
   ListView
 } from 'react-native'
@@ -34,6 +36,7 @@ class AppIndexScreen extends Component {
 
   _handleDeploy () {
     console.log('send data')
+    //
     this._navigateToSuccessShowScreen()
   }
 
@@ -47,12 +50,19 @@ class AppIndexScreen extends Component {
         <TouchableOpacity style={styles.deployButton}onPress={(e) => this._handleDeploy()}>
           <Text>Deploy</Text>
         </TouchableOpacity>
+        <Image source={require('../images/button-bottom.png')} />
+        <Image source={require('../images/button-top.png')} />
       </ViewContainer>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  mainButton: {
+    width: 30,
+    height: 30
+  },
+
   settingsButton: {
     height: 30,
     width: 30,
