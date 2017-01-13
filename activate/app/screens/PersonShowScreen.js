@@ -5,15 +5,53 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
+  TouchableHighlight,
+  StyleSheet
 } from 'react-native'
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/viewContainer'
-import _ from 'lodash'
+import t from 'tcomb-form-native'
+
+let Form = t.form.Form
+
+// here we are: define your domain model
+let Person = t.struct({
+  name: t.String,              // a required string
+  phoneNumber: t.String,  // an optional string
+  message: t.String
+})
+
+let options = {
+  auto: 'placeholders'
+} // optional rendering options (see documentation)
 
 class PersonShowScreen extends Component {
   constructor (props) {
     super(props)
+  }
+
+  _getInitialState() {
+
+    let name = this.props.person.name
+    let phoneNumber = this.props.person.phoneNumber
+    let message = this.props.person.message
+
+    return {
+      name: name,
+      phoneNumber: phoneNumber,
+      message: message
+    }
+  }
+
+  _onChange(value) {
+    this.setState({value});
+  }
+
+  _onPress () {
+    let value = this.refs.form.getValue();
+    if (value) {
+      console.log(value);
+    }
   }
 
   _navigateToAppIndexScreen () {
@@ -30,9 +68,19 @@ class PersonShowScreen extends Component {
           <Text>Back</Text>
         </TouchableOpacity>
         <Text style={{marginTop: 100, fontSize: 20}}>{`Person Show Screen`}</Text>
-        <Text style={styles.personName}>{`${_.capitalize(this.props.person.name)}`}</Text>
-        <Text style={styles.personName}>{`${_.capitalize(this.props.person.phoneNumber)}`}</Text>
-        <Text style={styles.personName}>{`${_.capitalize(this.props.person.message)}`}</Text>
+
+        <View style={styles.container}>
+          <Form
+            ref="form"
+            type={Person}
+            value={this._getInitialState()}
+            onChange={this._onChange}
+            options={options}
+          />
+          <TouchableHighlight style={styles.button} onPress={this.onPress} underlayColor='#99d9f4'>
+            <Text style={styles.buttonText}>Save</Text>
+          </TouchableHighlight>
+        </View>
       </ViewContainer>
     )
   }
@@ -42,9 +90,32 @@ const styles = StyleSheet.create({
   backButton: {
 
   },
-  personName: {
-
+  container: {
+    justifyContent: 'center',
+    marginTop: 50,
+    padding: 20,
+    backgroundColor: '#ffffff',
   },
+  title: {
+    fontSize: 30,
+    alignSelf: 'center',
+    marginBottom: 30
+  },
+  buttonText: {
+    fontSize: 18,
+    color: 'white',
+    alignSelf: 'center'
+  },
+  button: {
+    height: 36,
+    backgroundColor: '#48BBEC',
+    borderColor: '#48BBEC',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginBottom: 10,
+    alignSelf: 'stretch',
+    justifyContent: 'center'
+  }
 })
 
 module.exports = PersonShowScreen
