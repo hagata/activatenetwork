@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Button,
   StyleSheet,
   TouchableHighlight,
   View
-} from 'react-native';
+} from 'react-native'
 
 
 export default class changeBox extends Component {
@@ -14,29 +14,18 @@ export default class changeBox extends Component {
 
   render() {
     return (
-        <Button
-            onPress={this._handleButtonPress}
-            title="Press the button!"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-            style={styles.button}
-          />
-    );
+      <Button
+          onPress={this._handleButtonPress}
+          title="Press the button!"
+          color="#841584"
+          accessibilityLabel="Learn more about this purple button"
+          style={styles.button}
+        />
+    )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
   button: {
     height: 36,
     flexDirection: 'row',
@@ -47,5 +36,5 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'
-  },
-});
+  }
+})
