@@ -2,14 +2,16 @@
 
 import React, { Component } from 'react'
 import {
+  View,
   Text,
   TouchableOpacity,
-  StyleSheet
+  StyleSheet,
 } from 'react-native'
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/viewContainer'
+import _ from 'lodash'
 
-class SuccessIndexScreen extends Component {
+class PersonShowScreen extends Component {
   constructor (props) {
     super(props)
   }
@@ -27,7 +29,10 @@ class SuccessIndexScreen extends Component {
         <TouchableOpacity style={styles.backButton} onPress={(e) => this._navigateToAppIndexScreen()}>
           <Text>Back</Text>
         </TouchableOpacity>
-        <Text>{`This is your settings page`}</Text>
+        <Text style={{marginTop: 100, fontSize: 20}}>{`Person Show Screen`}</Text>
+        <Text style={styles.personName}>{`${_.capitalize(this.props.person.name)}`}</Text>
+        <Text style={styles.personName}>{`${_.capitalize(this.props.person.phoneNumber)}`}</Text>
+        <Text style={styles.personName}>{`${_.capitalize(this.props.person.message)}`}</Text>
       </ViewContainer>
     )
   }
@@ -36,7 +41,10 @@ class SuccessIndexScreen extends Component {
 const styles = StyleSheet.create({
   backButton: {
 
-  }
+  },
+  personName: {
+
+  },
 })
 
-module.exports = SuccessIndexScreen
+module.exports = PersonShowScreen

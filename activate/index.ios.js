@@ -30,7 +30,8 @@ export default class activate extends Component {
         case 'PersonShowScreen':
           return (
             <PersonShowScreen
-              {...globalNavigatorProps} />
+              {...globalNavigatorProps}
+              person={route.person} />
           )
         case 'SuccessIndex':
           return (
