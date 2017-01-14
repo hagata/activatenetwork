@@ -11,8 +11,18 @@ import {
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/viewContainer'
 import t from 'tcomb-form-native'
+import _ from 'lodash'
 
 let Form = t.form.Form
+
+// clone the default stylesheet
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+// overriding the styles
+stylesheet.controlLabel.normal.color = '#cecece';
+stylesheet.controlLabel.normal.fontSize = 14;
+stylesheet.controlLabel.normal.fontWeight = 'bold';
+stylesheet.textbox.normal.backgroundColor = '#ffffff';
 
 // here we are: define your domain model
 let Person = t.struct({
@@ -25,14 +35,17 @@ let options = {
   auto: 'placeholders',
    fields: {
      name: {
-       label: 'Name'
+       label: 'Name',
+       stylesheet: stylesheet
      },
      phoneNumber: {
-       label: 'Phone Number'
+       label: 'Phone Number',
+       stylesheet: stylesheet
      },
      message: {
        label: 'Message',
-       type: 'textarea'
+       type: 'textarea',
+       stylesheet: stylesheet
      },
 
   }
@@ -74,8 +87,8 @@ class PersonShowScreen extends Component {
     return (
       <ViewContainer>
         <StatusBarBackground />
-        <TouchableOpacity style={styles.backButton} onPress={(e) => this._navigateToAppIndexScreen()}>
-          <Text>Back</Text>
+        <TouchableOpacity onPress={(e) => this._navigateToAppIndexScreen()}>
+          <Text style={styles.backButton}>Back</Text>
         </TouchableOpacity>
         <View style={styles.container}>
           <Form
@@ -102,9 +115,7 @@ const styles = StyleSheet.create({
 
   container: {
     justifyContent: 'center',
-    marginTop: 50,
-    padding: 20,
-    backgroundColor: '#ffffff',
+    padding: 20
   },
 
   title: {
@@ -118,7 +129,7 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   },
-  
+
   button: {
     height: 36,
     backgroundColor: '#48BBEC',

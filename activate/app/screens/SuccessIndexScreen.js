@@ -22,6 +22,18 @@ class SuccessIndexScreen extends Component {
     })
   }
 
+  _handleDeploy () {
+    console.log('send data')
+    this._navigateToAppIndexScreen()
+  }
+
+  _navigateToAppIndexScreen () {
+    this.props.navigator.push({
+      ident: 'AppIndex'
+    })
+
+  }
+
   render () {
     return (
       <ViewContainer>
@@ -35,11 +47,11 @@ class SuccessIndexScreen extends Component {
           <Text style={styles.textSub}>{"\n"}Your messages have been sent.{"\n"}Good luck out there.</Text>
         </View>
 
-        <TouchableOpacity style={styles.mainContainer}>
-          <View style={styles.backgroundContainer}>
+        <View style={styles.mainContainer} onPress={(e) => this._handleDeploy()}>
+          <TouchableOpacity style={styles.backgroundContainer} onPress={(e) => this._handleDeploy()}>
             <Image source={require('../images/button-after.png')} />
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </View>
 
 
       </ViewContainer>

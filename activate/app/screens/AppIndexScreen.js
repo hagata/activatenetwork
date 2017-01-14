@@ -80,14 +80,17 @@ class AppIndexScreen extends Component {
           <Text style={styles.textSub}>{"\n"}Press this button to send messages{"\n"}to your network</Text>
         </View>
 
-        <TouchableOpacity style={styles.mainContainer} onPress={(e) => this._handleDeploy()}>
-          <View style={styles.backgroundContainer}>
+        <View style={styles.mainContainer}>
+          <TouchableOpacity style={styles.backgroundContainer} onPress={(e) => this._handleDeploy()}>
             <Image source={require('../images/button-before.png')} />
-          </View>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.myNetwork}>
-          <Text style={styles.peopleHeader}>My Network</Text>
+          <View style={styles.peopleHeaderContainer}>
+            <Text style={styles.peopleHeader}>My Network</Text>
+            <Icon name="plus" style={styles.addIcon} />
+          </View>
           <ListView
 
             dataSource={this.state.peopleDataSource}
@@ -119,13 +122,13 @@ const styles = StyleSheet.create({
 
   mainContainer: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'center'
   },
 
   backgroundContainer: {
     alignItems: 'center',
-    width: 10
+    height: 145,
+    width: 145
   },
 
   mainButton: {
@@ -174,14 +177,29 @@ const styles = StyleSheet.create({
     paddingTop: 10
   },
 
+  peopleHeaderContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    backgroundColor: '#222430'
+  },
+
   peopleHeader: {
+    flex: 1,
     color: 'white',
     fontWeight: 'bold',
     paddingLeft: 15,
     paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: '#222430'
+    paddingBottom: 10
   },
+
+  addIcon: {
+    color: 'white',
+    height: 30,
+    width: 30,
+    paddingRight: 45,
+    paddingTop: 12
+  },
+
   personName: {
     color: 'white'
   },
