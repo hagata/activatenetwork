@@ -18,7 +18,7 @@ import Users from '../data/users'
 const fullWidth = Dimensions.get('window').width
 
 const DEPLOY_ENDPOINT = 'https://express-twilio.herokuapp.com/deployMessagesFromApp?id=';
-const USER_ID = '000'
+const USER_ID = '123'
 
 class AppIndexScreen extends Component {
   constructor (props) {
@@ -29,7 +29,7 @@ class AppIndexScreen extends Component {
 
     // if data changes, set this.state
     this.state = {
-      peopleDataSource: ds.cloneWithRows(Users['15104499800']['contacts'])
+      peopleDataSource: ds.cloneWithRows(Users['123']['contacts'])
     }
   }
 
