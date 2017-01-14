@@ -4,7 +4,6 @@ import React, { Component } from 'react'
 import {
   StyleSheet,
   Text,
-  Button,
   View,
   Image,
   TouchableOpacity,
@@ -13,20 +12,20 @@ import {
 } from 'react-native'
 import ViewContainer from '../components/viewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
-import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import Users from '../data/users'
 
-const fullWidth = Dimensions.get('window').width;
-const fullHeight = Dimensions.get('window').height;
+const fullWidth = Dimensions.get('window').width
 
+const DEPLOY_ENDPOINT = 'http://10.11.12.18:8080/deployMessagesFromApp?id=';
+const USER_ID = '000'
 
 class AppIndexScreen extends Component {
   constructor (props) {
     super(props)
 
     // This is needed to render lists from data
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 != r2})
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
 
     // if data changes, set this.state
     this.state = {
@@ -42,7 +41,7 @@ class AppIndexScreen extends Component {
 
   _navigateToPersonShowPerson (person) {
     this.props.navigator.push({
-      ident: "PersonShowScreen",
+      ident: 'PersonShowScreen',
       person: person
     })
   }
@@ -51,12 +50,20 @@ class AppIndexScreen extends Component {
     this.props.navigator.push({
       ident: 'SettingsIndex'
     })
-
   }
 
   _handleDeploy () {
-    console.log('send data')
-    this._navigateToSuccessShowScreen()
+    fetch(`${DEPLOY_ENDPOINT}${USER_ID}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      }
+    }).then((response) => {
+      this._navigateToSuccessShowScreen()
+    })
+    console.log('Button Pressed!');
+
   }
 
   _renderPersonRow (person) {
@@ -64,10 +71,16 @@ class AppIndexScreen extends Component {
       <TouchableOpacity style={styles.personRow} onPress={(e) => this._navigateToPersonShowPerson(person)}>
         <Text style={styles.personName}>{person.name}</Text>
         <View style={{flex: 1}} />
-        <Icon name="chevron-right" style={styles.personMoreIcon} />
+        <Icon name='chevron-right' style={styles.personMoreIcon} />
       </TouchableOpacity>
 
     )
+  }
+
+  _navigateToSettingsScreen () {
+    this.props.navigator.push({
+      ident: "SettingsIndex"
+    })
   }
 
   render () {
@@ -75,9 +88,13 @@ class AppIndexScreen extends Component {
       <ViewContainer>
         <StatusBarBackground />
 
+      <TouchableOpacity onPress={(e) => this._navigateToSettingsScreen(e)}>
+          <Icon name="cog" style={styles.settingsIcon} />
+        </TouchableOpacity>
+
         <View style={styles.textHeaderContainer}>
-          <Text style={styles.textHeader}>Activate Your{"\n"}Network</Text>
-          <Text style={styles.textSub}>{"\n"}Press this button to send messages{"\n"}to your network</Text>
+          <Text style={styles.textHeader}>Activate Your{'\n'}Network</Text>
+          <Text style={styles.textSub}>{'\n'}Press this button to send messages{'\n'}to your network</Text>
         </View>
 
         <View style={styles.mainContainer}>
@@ -138,11 +155,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
-  settingsButton: {
-    height: 30,
-    width: 30,
+  settingsIcon: {
+    fontSize: 18,
+    color: '#c2c2c2',
+    position: 'absolute',
+    top: 10,
+    right: 10,
     flexDirection: 'row',
-    justifyContent: 'flex-end'
+    alignItems: 'flex-end'
   },
 
   deployButton: {
