@@ -49,7 +49,7 @@ class SuccessIndexScreen extends Component {
 
 const styles = StyleSheet.create({
   textHeaderContainer: {
-    margin: 25,
+    margin: 50,
     flex: 1
   },
 
@@ -66,12 +66,13 @@ const styles = StyleSheet.create({
   },
 
   mainContainer: {
-    flex: 1,
+    flex: 5,
     alignItems: 'center'
   },
 
   backButton: {
-    color: 'white'
+    color: 'white',
+    padding: 15
   }
 
 })
