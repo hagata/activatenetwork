@@ -11,23 +11,40 @@ import {
 import StatusBarBackground from '../components/StatusBarBackground'
 import ViewContainer from '../components/viewContainer'
 import t from 'tcomb-form-native'
+import _ from 'lodash'
 
 let Form = t.form.Form
+
+// clone the default stylesheet
+const stylesheet = _.cloneDeep(t.form.Form.stylesheet);
+
+// overriding the styles
+stylesheet.controlLabel.normal.color = '#cecece';
+stylesheet.controlLabel.normal.fontSize = 14;
+stylesheet.controlLabel.normal.fontWeight = 'bold';
+stylesheet.textbox.normal.backgroundColor = '#ffffff';
 
 // here we are: define your domain model
 let Person = t.struct({
   name: t.String,              // a required string
-  pin: t.Number,  // an optional string
+  phoneNumber: t.String,  // an optional string
+  pin: t.String
 })
 
 let options = {
   auto: 'placeholders',
    fields: {
      name: {
-       label: 'Name'
+       label: 'My Name',
+       stylesheet: stylesheet
      },
      pin: {
-       label: 'Pin'
+       label: 'My Pin',
+       stylesheet: stylesheet
+     },
+     phoneNumber: {
+       label: 'My Phone Number',
+       stylesheet: stylesheet
      }
    }
 } // optional rendering options (see documentation)
@@ -40,11 +57,13 @@ class SuccessIndexScreen extends Component {
   _getInitialState() {
 
     let name = 'Natalia'
-    let pin = 12345
+    let pin = '12345'
+    let phoneNumber = '+15104499800'
 
     return {
       name: name,
-      pin: pin
+      pin: pin,
+      phoneNumber: phoneNumber
     }
   }
 
@@ -91,10 +110,9 @@ const styles = StyleSheet.create({
     padding: 15
   },
   container: {
+    marginTop: 10,
     justifyContent: 'center',
-    marginTop: 50,
-    padding: 20,
-    backgroundColor: '#ffffff',
+    padding: 20
   },
 
   title: {
