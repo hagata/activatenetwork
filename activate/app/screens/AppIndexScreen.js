@@ -26,10 +26,10 @@ class AppIndexScreen extends Component {
 
     // This is needed to render lists from data
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
-
+    console.log(this.props.contacts)
     // if data changes, set this.state
     this.state = {
-      peopleDataSource: ds.cloneWithRows(Users['15104499800']['contacts'])
+      peopleDataSource: ds.cloneWithRows(this.props.contacts)
     }
   }
 

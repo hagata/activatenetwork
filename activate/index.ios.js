@@ -14,7 +14,7 @@ import AppIndexScreen from './app/screens/AppIndexScreen'
 import SuccessIndexScreen from './app/screens/SuccessIndexScreen'
 import SettingsIndexScreen from './app/screens/SettingsIndexScreen'
 import AddContactIndexScreen from './app/screens/AddContactIndexScreen'
-import LoginIndexScreen from './app/screens/LoginIndexScreen'
+import LoadingIndexScreen from './app/screens/LoadingIndexScreen'
 import PersonShowScreen from './app/screens/PersonShowScreen'
 
 export default class activate extends Component {
@@ -26,13 +26,14 @@ export default class activate extends Component {
     switch (route.ident) {
       case 'LoginIndex':
         return (
-          <LoginIndexScreen
+          <LoadingIndexScreen
             {...globalNavigatorProps} />
         )
       case 'AppIndex':
         return (
           <AppIndexScreen
-            {...globalNavigatorProps} />
+            {...globalNavigatorProps}
+            contacts={route.contacts} />
         )
         case 'PersonShowScreen':
           return (
