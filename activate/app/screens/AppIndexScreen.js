@@ -101,7 +101,8 @@ class AppIndexScreen extends Component {
 
 const styles = StyleSheet.create({
   textHeaderContainer: {
-    top: 50
+    top: 50,
+    flex: 1
   },
 
   textHeader: {
@@ -117,10 +118,7 @@ const styles = StyleSheet.create({
   },
 
   mainContainer: {
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     position: 'absolute',
@@ -172,6 +170,7 @@ const styles = StyleSheet.create({
   myNetwork: {
     position: 'absolute',
     bottom: 15,
+    flex: 1,
     width: fullWidth
   },
 
