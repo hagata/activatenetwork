@@ -22,7 +22,19 @@ let Person = t.struct({
 })
 
 let options = {
-  auto: 'placeholders'
+  auto: 'placeholders',
+   fields: {
+     name: {
+       label: 'Name'
+     },
+     phoneNumber: {
+       label: 'Phone Number'
+     },
+     message: {
+       label: 'Message'
+     },
+     
+  }
 } // optional rendering options (see documentation)
 
 class PersonShowScreen extends Component {
@@ -73,7 +85,6 @@ class PersonShowScreen extends Component {
             value={this._getInitialState()}
             options={options}
           />
-
         <TouchableHighlight style={styles.button} onPress={this._onPress.bind(this)} underlayColor='#99d9f4'>
             <Text style={styles.buttonText}>Save</Text>
           </TouchableHighlight>

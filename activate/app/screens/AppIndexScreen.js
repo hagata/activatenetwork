@@ -15,33 +15,10 @@ import ViewContainer from '../components/viewContainer'
 import StatusBarBackground from '../components/StatusBarBackground'
 import _ from 'lodash'
 import Icon from 'react-native-vector-icons/FontAwesome'
+import Users from '../data/users'
 
 const fullWidth = Dimensions.get('window').width;
 const fullHeight = Dimensions.get('window').height;
-
-const PEOPLE = [{
-  name: "Cid Donham",
-  phoneNumber: "+19253254480",
-  message: "🚨 Your friend Natalia is in trouble. Your friend Natalia is in trouble. help!  🚓"
-  },
-
-  {
-  name: "Gela Fridman",
-  phoneNumber: "+19253254480",
-  message: "🚨 Your friend Natalia is in trouble. Your friend Natalia is in trouble. help!  🚓"
-  },
-
-  {
-  name: "Genki Hagata",
-  phoneNumber: "+19253254480",
-  message: "🚨 Your friend Natalia is in trouble. Your friend Natalia is in trouble. help!  🚓"
-  },
-
-  {
-  name: "Jessie Kim",
-  phoneNumber: "+13238545777",
-  message: "🚨 Your friend Natalia is in trouble. Hey Jessie, it's Natalia, please take care of my fish  🚓"
-}]
 
 
 class AppIndexScreen extends Component {
@@ -53,7 +30,7 @@ class AppIndexScreen extends Component {
 
     // if data changes, set this.state
     this.state = {
-      peopleDataSource: ds.cloneWithRows(PEOPLE)
+      peopleDataSource: ds.cloneWithRows(Users['15104499800']['contacts'])
     }
   }
 
