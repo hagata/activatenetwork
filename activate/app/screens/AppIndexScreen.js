@@ -18,7 +18,7 @@ import Users from '../data/users'
 const fullWidth = Dimensions.get('window').width
 
 const DEPLOY_ENDPOINT = 'http://10.11.12.18:8080/deployMessagesFromApp?id=';
-const USER_ID = '9253254480'
+const USER_ID = '000'
 
 class AppIndexScreen extends Component {
   constructor (props) {
@@ -60,7 +60,6 @@ class AppIndexScreen extends Component {
         'Content-Type': 'application/json',
       }
     }).then((response) => {
-      console.dir(response)
       this._navigateToSuccessShowScreen()
     })
     console.log('Button Pressed!');
@@ -78,10 +77,20 @@ class AppIndexScreen extends Component {
     )
   }
 
+  _navigateToSettingsScreen () {
+    this.props.navigator.push({
+      ident: "SettingsIndex"
+    })
+  }
+
   render () {
     return (
       <ViewContainer>
         <StatusBarBackground />
+
+      <TouchableOpacity onPress={(e) => this._navigateToSettingsScreen(e)}>
+          <Icon name="cog" style={styles.settingsIcon} />
+        </TouchableOpacity>
 
         <View style={styles.textHeaderContainer}>
           <Text style={styles.textHeader}>Activate Your{'\n'}Network</Text>
@@ -143,11 +152,14 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
 
-  settingsButton: {
-    height: 30,
-    width: 30,
+  settingsIcon: {
+    fontSize: 18,
+    color: '#c2c2c2',
+    position: 'absolute',
+    top: 10,
+    right: 10,
     flexDirection: 'row',
-    justifyContent: 'flex-end'
+    alignItems: 'flex-end'
   },
 
   deployButton: {
