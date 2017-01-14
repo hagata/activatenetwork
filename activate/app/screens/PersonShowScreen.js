@@ -94,8 +94,10 @@ class PersonShowScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  backButton: {
 
+  backButton: {
+    color: 'white',
+    padding: 15
   },
 
   container: {
@@ -104,16 +106,19 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#ffffff',
   },
+
   title: {
     fontSize: 30,
     alignSelf: 'center',
     marginBottom: 30
   },
+
   buttonText: {
     fontSize: 18,
     color: 'white',
     alignSelf: 'center'
   },
+  
   button: {
     height: 36,
     backgroundColor: '#48BBEC',
