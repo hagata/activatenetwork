@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
 
   addIcon: {
-    color: 'white',
+    color: '#48BBEC',
     height: 30,
     width: 30,
     paddingRight: 45,
@@ -229,6 +229,7 @@ const styles = StyleSheet.create({
   personName: {
     color: 'white'
   },
+
   personMoreIcon: {
     color: 'white',
     height: 30,
