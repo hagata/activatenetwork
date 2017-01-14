@@ -7,8 +7,7 @@
 import React, { Component } from 'react'
 import {
   AppRegistry,
-  Navigator,
-  Text
+  Navigator
 } from 'react-native'
 
 import AppIndexScreen from './app/screens/AppIndexScreen'
