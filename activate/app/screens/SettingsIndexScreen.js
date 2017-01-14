@@ -57,7 +57,7 @@ class SuccessIndexScreen extends Component {
   _getInitialState() {
 
     let name = 'Natalia'
-    let pin = '12345'
+    let pin = '1234'
     let phoneNumber = '+15104499800'
 
     return {
