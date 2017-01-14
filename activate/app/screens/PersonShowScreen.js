@@ -74,8 +74,8 @@ class PersonShowScreen extends Component {
     return (
       <ViewContainer>
         <StatusBarBackground />
-        <TouchableOpacity style={styles.backButton} onPress={(e) => this._navigateToAppIndexScreen()}>
-          <Text>Back</Text>
+        <TouchableOpacity onPress={(e) => this._navigateToAppIndexScreen()}>
+          <Text style={styles.backButton}>Back</Text>
         </TouchableOpacity>
         <View style={styles.container}>
           <Form
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     color: 'white',
     alignSelf: 'center'
   },
-  
+
   button: {
     height: 36,
     backgroundColor: '#48BBEC',
