@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
     borderColor: '#48BBEC',
     borderWidth: 1,
     borderRadius: 8,
+    marginTop: 20,
     marginBottom: 10,
     alignSelf: 'stretch',
     justifyContent: 'center'

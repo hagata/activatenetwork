@@ -62,7 +62,6 @@ class AppIndexScreen extends Component {
     }).then((response) => {
       this._navigateToSuccessShowScreen()
     })
-    console.log('Button Pressed!');
 
   }
 
@@ -83,13 +82,19 @@ class AppIndexScreen extends Component {
     })
   }
 
+  _navigateToAddContactScreen () {
+    this.props.navigator.push({
+      ident: "AddContactIndex"
+    })
+  }
+
   render () {
     return (
       <ViewContainer>
         <StatusBarBackground />
 
-      <TouchableOpacity onPress={(e) => this._navigateToSettingsScreen(e)}>
-          <Icon name="cog" style={styles.settingsIcon} />
+        <TouchableOpacity onPress={(e) => this._navigateToSettingsScreen()}>
+            <Icon name="cog" style={styles.settingsIcon} />
         </TouchableOpacity>
 
         <View style={styles.textHeaderContainer}>
@@ -106,10 +111,11 @@ class AppIndexScreen extends Component {
         <View style={styles.myNetwork}>
           <View style={styles.peopleHeaderContainer}>
             <Text style={styles.peopleHeader}>My Network</Text>
-            <Icon name="plus" style={styles.addIcon} />
+              <TouchableOpacity onPress={(e) => this._navigateToAddContactScreen()}>
+                  <Icon name="plus" style={styles.addIcon} />
+              </TouchableOpacity>
           </View>
           <ListView
-
             dataSource={this.state.peopleDataSource}
             renderRow={(person) => this._renderPersonRow(person) }
           />

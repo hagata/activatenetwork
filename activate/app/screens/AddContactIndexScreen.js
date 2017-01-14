@@ -35,37 +35,35 @@ let options = {
   auto: 'placeholders',
    fields: {
      name: {
-       label: 'Name',
+       label: 'Contact Name',
        stylesheet: stylesheet
      },
      phoneNumber: {
-       label: 'Phone Number',
+       label: 'Contact Phone Number',
        stylesheet: stylesheet
      },
      message: {
-       label: 'Message',
-       type: 'textarea',
+       label: 'Message to Contact',
        stylesheet: stylesheet
-     },
-
-  }
+     }
+   }
 } // optional rendering options (see documentation)
 
-class PersonShowScreen extends Component {
+class AddContactIndexScreen extends Component {
   constructor (props) {
     super(props)
   }
 
   _getInitialState() {
 
-    let name = this.props.person.name
-    let phoneNumber = this.props.person.phoneNumber
-    let message = this.props.person.message
+    let name = 'Natalia'
+    let pin = '12345'
+    let phoneNumber = '+15104499800'
 
     return {
       name: name,
-      phoneNumber: phoneNumber,
-      message: message
+      pin: pin,
+      phoneNumber: phoneNumber
     }
   }
 
@@ -94,7 +92,6 @@ class PersonShowScreen extends Component {
           <Form
             ref="form"
             type={Person}
-            value={this._getInitialState()}
             options={options}
           />
         <TouchableHighlight style={styles.button} onPress={this._onPress.bind(this)} underlayColor='#99d9f4'>
@@ -107,12 +104,10 @@ class PersonShowScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-
   backButton: {
     color: 'white',
     padding: 15
   },
-
   container: {
     marginTop: 10,
     justifyContent: 'center',
@@ -144,4 +139,4 @@ const styles = StyleSheet.create({
   }
 })
 
-module.exports = PersonShowScreen
+module.exports = AddContactIndexScreen

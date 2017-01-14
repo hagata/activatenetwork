@@ -13,6 +13,7 @@ import {
 import AppIndexScreen from './app/screens/AppIndexScreen'
 import SuccessIndexScreen from './app/screens/SuccessIndexScreen'
 import SettingsIndexScreen from './app/screens/SettingsIndexScreen'
+import AddContactIndexScreen from './app/screens/AddContactIndexScreen'
 import PersonShowScreen from './app/screens/PersonShowScreen'
 
 export default class activate extends Component {
@@ -42,6 +43,13 @@ export default class activate extends Component {
             <SettingsIndexScreen
               {...globalNavigatorProps} />
           )
+
+        case 'AddContactIndex':
+          return (
+            <AddContactIndexScreen
+              {...globalNavigatorProps} />
+          )
+
     }
   }
 
