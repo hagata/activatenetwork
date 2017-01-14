@@ -17,7 +17,7 @@ import Users from '../data/users'
 
 const fullWidth = Dimensions.get('window').width
 
-const DEPLOY_ENDPOINT = 'http://10.11.12.18:8080/deployMessagesFromApp?id=';
+const DEPLOY_ENDPOINT = 'https://express-twilio.herokuapp.com/deployMessagesFromApp?id=';
 const USER_ID = '000'
 
 class AppIndexScreen extends Component {
