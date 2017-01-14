@@ -76,14 +76,19 @@ class AppIndexScreen extends Component {
       <ViewContainer>
         <StatusBarBackground />
 
-        <TouchableOpacity onPress={(e) => this._handleDeploy()}>
-          <View style={styles.backgroundContainer}>
-            <Image source={require('../images/button-bottom.png')} />
-          </View>
-          <View style = {styles.foregroundContainer}>
-            <Image source={require('../images/button-top.png')} />
-          </View>
-        </TouchableOpacity>
+        <View style={styles.textHeaderContainer}>
+          <Text style={styles.textHeader}>Activate Your{"\n"}Network</Text>
+          <Text style={styles.textSub}>{"\n"}Press this button to send messages{"\n"}to your network</Text>
+
+          <TouchableOpacity onPress={(e) => this._handleDeploy()}>
+            <View style={styles.backgroundContainer}>
+              <Image source={require('../images/button-before.png')} />
+            </View>
+          </TouchableOpacity>
+          
+        </View>
+
+
 
         <View style={styles.myNetwork}>
           <Text style={styles.peopleHeader}>My Network</Text>
@@ -99,15 +104,30 @@ class AppIndexScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  textHeaderContainer: {
+    top: 50,
+    flex: 1
+  },
+
+  textHeader: {
+    color: 'white',
+    fontSize: 36,
+    textAlign: 'center',
+    fontWeight: '200'
+  },
+
+  textSub: {
+    color: '#cecece',
+    textAlign: 'center'
+  },
 
   backgroundContainer: {
-    width: 10,
-    alignItems: 'center'
+    alignItems: 'center',
+    width: 10
   },
 
   foregroundContainer: {
-    alignItems: 'center',
-    position: 'absolute'
+    alignItems: 'center'
   },
 
   mainButton: {
@@ -122,13 +142,6 @@ const styles = StyleSheet.create({
     width: 30,
     flexDirection: 'row',
     justifyContent: 'flex-end'
-  },
-
-  settingsIcon: {
-    height: 30,
-    width: 30,
-    color: 'deepskyblue'
-
   },
 
   deployButton: {
@@ -150,7 +163,8 @@ const styles = StyleSheet.create({
 
   myNetwork: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 15,
+    flex: 1,
     width: fullWidth
   },
 
