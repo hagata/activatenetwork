@@ -14,18 +14,26 @@ import AppIndexScreen from './app/screens/AppIndexScreen'
 import SuccessIndexScreen from './app/screens/SuccessIndexScreen'
 import SettingsIndexScreen from './app/screens/SettingsIndexScreen'
 import AddContactIndexScreen from './app/screens/AddContactIndexScreen'
+import LoadingIndexScreen from './app/screens/LoadingIndexScreen'
 import PersonShowScreen from './app/screens/PersonShowScreen'
 
 export default class activate extends Component {
+
 
   _renderScene (route, navigator) {
     let globalNavigatorProps = { navigator }
 
     switch (route.ident) {
+      case 'LoginIndex':
+        return (
+          <LoadingIndexScreen
+            {...globalNavigatorProps} />
+        )
       case 'AppIndex':
         return (
           <AppIndexScreen
-            {...globalNavigatorProps} />
+            {...globalNavigatorProps}
+            contacts={route.contacts} />
         )
         case 'PersonShowScreen':
           return (
@@ -56,7 +64,7 @@ export default class activate extends Component {
   render () {
     return (
       <Navigator
-        initialRoute={{ident: 'AppIndex'}}
+        initialRoute={{ident: 'LoginIndex'}}
         ref='appNavigator'
         renderScene={(route, navigator) => { return this._renderScene(route, navigator) }} />
     )
