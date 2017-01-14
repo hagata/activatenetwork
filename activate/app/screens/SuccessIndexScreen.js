@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import {
   View,
   Text,
+  Image,
   TouchableOpacity,
   StyleSheet
 } from 'react-native'
@@ -25,10 +26,21 @@ class SuccessIndexScreen extends Component {
     return (
       <ViewContainer>
         <StatusBarBackground />
-          <TouchableOpacity style={styles.backButton} onPress={(e) => this._navigateToAppIndexScreen()}>
-            <Text>Back</Text>
+          <TouchableOpacity onPress={(e) => this._navigateToAppIndexScreen()}>
+            <Text style={styles.backButton}>Back</Text>
           </TouchableOpacity>
-        <Text>{`Deployed! Good luck out there.`}</Text>
+
+        <View style={styles.textHeaderContainer}>
+          <Text style={styles.textHeader}>Success!</Text>
+          <Text style={styles.textSub}>{"\n"}Your messages have been sent.{"\n"}Good luck out there.</Text>
+        </View>
+
+        <TouchableOpacity style={styles.mainContainer}>
+          <View style={styles.backgroundContainer}>
+            <Image source={require('../images/button-after.png')} />
+          </View>
+        </TouchableOpacity>
+
 
       </ViewContainer>
     )
@@ -36,9 +48,32 @@ class SuccessIndexScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  backButton: {
+  textHeaderContainer: {
+    margin: 25,
+    flex: 1
+  },
 
+  textHeader: {
+    color: 'white',
+    fontSize: 36,
+    textAlign: 'center',
+    fontWeight: '200'
+  },
+
+  textSub: {
+    color: '#cecece',
+    textAlign: 'center'
+  },
+
+  mainContainer: {
+    flex: 1,
+    alignItems: 'center'
+  },
+
+  backButton: {
+    color: 'white'
   }
+
 })
 
 module.exports = SuccessIndexScreen
