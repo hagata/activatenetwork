@@ -75,16 +75,16 @@ class AppIndexScreen extends Component {
       <ViewContainer>
         <StatusBarBackground />
 
+        <View style={styles.textHeaderContainer}>
+          <Text style={styles.textHeader}>Activate Your{"\n"}Network</Text>
+          <Text style={styles.textSub}>{"\n"}Press this button to send messages{"\n"}to your network</Text>
+        </View>
+
         <TouchableOpacity style={styles.mainContainer} onPress={(e) => this._handleDeploy()}>
           <View style={styles.backgroundContainer}>
             <Image source={require('../images/button-before.png')} />
           </View>
         </TouchableOpacity>
-
-        <View style={styles.textHeaderContainer}>
-          <Text style={styles.textHeader}>Activate Your{"\n"}Network</Text>
-          <Text style={styles.textSub}>{"\n"}Press this button to send messages{"\n"}to your network</Text>
-        </View>
 
         <View style={styles.myNetwork}>
           <Text style={styles.peopleHeader}>My Network</Text>
@@ -120,20 +120,12 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
-    width: fullWidth,
-    height: fullHeight,
-    backgroundColor: '#3A3E4F'
+    justifyContent: 'center'
   },
 
   backgroundContainer: {
     alignItems: 'center',
     width: 10
-  },
-
-  foregroundContainer: {
-    alignItems: 'center'
   },
 
   mainButton: {
@@ -168,8 +160,6 @@ const styles = StyleSheet.create({
   },
 
   myNetwork: {
-    position: 'absolute',
-    bottom: 15,
     flex: 1,
     width: fullWidth
   },
