@@ -100,12 +100,14 @@ class AppIndexScreen extends Component {
 
         <TouchableOpacity style={styles.mainContainer} onPress={(e) => this._handleDeploy()}>
           <View style={styles.backgroundContainer}>
-            <Image source={require('../images/button-bottom.png')} />
-          </View>
-          <View style = {styles.foregroundContainer}>
-            <Image source={require('../images/button-top.png')} />
+            <Image source={require('../images/button-before.png')} />
           </View>
         </TouchableOpacity>
+
+        <View style={styles.textHeaderContainer}>
+          <Text style={styles.textHeader}>Activate Your{"\n"}Network</Text>
+          <Text style={styles.textSub}>{"\n"}Press this button to send messages{"\n"}to your network</Text>
+        </View>
 
         <View style={styles.myNetwork}>
           <Text style={styles.peopleHeader}>My Network</Text>
@@ -121,11 +123,29 @@ class AppIndexScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  textHeaderContainer: {
+    top: 50
+  },
+
+  textHeader: {
+    color: 'white',
+    fontSize: 36,
+    textAlign: 'center',
+    fontWeight: '200'
+  },
+
+  textSub: {
+    color: '#cecece',
+    textAlign: 'center'
+  },
+
   mainContainer: {
     top: 0,
     bottom: 0,
     left: 0,
     right: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'absolute',
     width: fullWidth,
     height: fullHeight,
@@ -133,13 +153,12 @@ const styles = StyleSheet.create({
   },
 
   backgroundContainer: {
-    width: 10,
-    alignItems: 'center'
+    alignItems: 'center',
+    width: 10
   },
 
   foregroundContainer: {
-    alignItems: 'center',
-    position: 'absolute'
+    alignItems: 'center'
   },
 
   mainButton: {
@@ -154,13 +173,6 @@ const styles = StyleSheet.create({
     width: 30,
     flexDirection: 'row',
     justifyContent: 'flex-end'
-  },
-
-  settingsIcon: {
-    height: 30,
-    width: 30,
-    color: 'deepskyblue'
-
   },
 
   deployButton: {
@@ -182,7 +194,7 @@ const styles = StyleSheet.create({
 
   myNetwork: {
     position: 'absolute',
-    bottom: 10,
+    bottom: 15,
     width: fullWidth
   },
 
