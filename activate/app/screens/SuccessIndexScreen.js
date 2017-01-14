@@ -23,7 +23,6 @@ class SuccessIndexScreen extends Component {
   }
 
   _handleDeploy () {
-    console.log('send data')
     this._navigateToAppIndexScreen()
   }
 

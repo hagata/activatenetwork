@@ -40,7 +40,6 @@ class LoadingIndexScreen extends Component {
     }).then((response) => {
       return response.json()
     }).then((data) => {
-      console.log(data)
       this._navigateToAppIndexScreen(data)
     })
   }

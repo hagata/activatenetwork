@@ -14,7 +14,6 @@ class SettingsButton extends Component {
     }
 
   _handleButtonPress() {
-    console.log('Button Pressed!')
     this._navigateToSettingsScreen()
   }
 

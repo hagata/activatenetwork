@@ -73,7 +73,7 @@ class PersonShowScreen extends Component {
     let value = this.refs.form.getValue();
 
     if (value) {
-      alert(value);
+      
     }
   }
 
