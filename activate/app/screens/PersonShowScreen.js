@@ -31,9 +31,10 @@ let options = {
        label: 'Phone Number'
      },
      message: {
-       label: 'Message'
+       label: 'Message',
+       type: 'textarea'
      },
-     
+
   }
 } // optional rendering options (see documentation)
 
@@ -76,8 +77,6 @@ class PersonShowScreen extends Component {
         <TouchableOpacity style={styles.backButton} onPress={(e) => this._navigateToAppIndexScreen()}>
           <Text>Back</Text>
         </TouchableOpacity>
-        <Text style={{marginTop: 100, fontSize: 20}}>{`Person Show Screen`}</Text>
-
         <View style={styles.container}>
           <Form
             ref="form"

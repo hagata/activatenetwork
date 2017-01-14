@@ -8,6 +8,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  TouchableHighlight,
   Dimensions,
   ListView
 } from 'react-native'
@@ -75,7 +76,7 @@ class AppIndexScreen extends Component {
       <ViewContainer>
         <StatusBarBackground />
 
-        <TouchableOpacity style={styles.mainContainer} onPress={(e) => this._handleDeploy()}>
+        <TouchableOpacity onPress={(e) => this._handleDeploy()}>
           <View style={styles.backgroundContainer}>
             <Image source={require('../images/button-bottom.png')} />
           </View>
@@ -98,16 +99,6 @@ class AppIndexScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    position: 'absolute',
-    width: fullWidth,
-    height: fullHeight,
-    backgroundColor: '#3A3E4F'
-  },
 
   backgroundContainer: {
     width: 10,
