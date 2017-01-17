@@ -7,47 +7,68 @@
 import React, { Component } from 'react'
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+  Navigator
+} from 'react-native'
+
+import AppIndexScreen from './app/screens/AppIndexScreen'
+import SuccessIndexScreen from './app/screens/SuccessIndexScreen'
+import SettingsIndexScreen from './app/screens/SettingsIndexScreen'
+import AddContactIndexScreen from './app/screens/AddContactIndexScreen'
+import LoadingIndexScreen from './app/screens/LoadingIndexScreen'
+import PersonShowScreen from './app/screens/PersonShowScreen'
 
 export default class activate extends Component {
-  render() {
+
+
+  _renderScene (route, navigator) {
+    let globalNavigatorProps = { navigator }
+
+    switch (route.ident) {
+      case 'LoginIndex':
+        return (
+          <LoadingIndexScreen
+            {...globalNavigatorProps} />
+        )
+      case 'AppIndex':
+        return (
+          <AppIndexScreen
+            {...globalNavigatorProps}
+            contacts={route.contacts} />
+        )
+        case 'PersonShowScreen':
+          return (
+            <PersonShowScreen
+              {...globalNavigatorProps}
+              person={route.person} />
+          )
+        case 'SuccessIndex':
+          return (
+            <SuccessIndexScreen
+              {...globalNavigatorProps} />
+          )
+        case 'SettingsIndex':
+          return (
+            <SettingsIndexScreen
+              {...globalNavigatorProps} />
+          )
+
+        case 'AddContactIndex':
+          return (
+            <AddContactIndexScreen
+              {...globalNavigatorProps} />
+          )
+
+    }
+  }
+
+  render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+      <Navigator
+        initialRoute={{ident: 'LoginIndex'}}
+        ref='appNavigator'
+        renderScene={(route, navigator) => { return this._renderScene(route, navigator) }} />
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('activate', () => activate);
+AppRegistry.registerComponent('activate', () => activate)
